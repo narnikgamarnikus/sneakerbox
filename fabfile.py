@@ -8,12 +8,12 @@ host_string = config.HOST_STRING
 
 def deploy():
     env.host_string = config.HOST_STRING
-    with cd('/var/www/flask-shop/flask-shop'):
+    with cd('/var/www/sneakerbox'):
         with shell_env(MODE='PRODUCTION'):
-            #run('git reset --hard HEAD')
-            #run('git pull')
+            run('git reset --hard HEAD')
+            run('git pull')
             run('sudo npm install')
-            #run('gulp')
+            run('gulp')
             with prefix('source ../venv/bin/activate'):
                 run('sudo pip install -r requirements.txt')
                 run('sudo python manage.py db upgrade')
