@@ -12,15 +12,15 @@ def deploy():
         with shell_env(MODE='PRODUCTION'):
             run('git reset --hard HEAD')
             run('git pull')
-            run('sudo npm install')
+            run('npm install')
             run('gulp')
-            with prefix('source ../venv/bin/activate'):
-                run('sudo pip install -r requirements.txt')
-                run('sudo python manage.py db upgrade')
-                run('sudo python manage.py build')
-            run('sudo supervisorctl restart flask-shop')
+            with prefix('source . venv/bin/activate'):
+                run('pip install -r requirements.txt')
+                run('python manage.py db upgrade')
+                run('python manage.py build')
+            run('supervisorctl restart sneakerbox')
 
 
 def restart():
     env.host_string = config.HOST_STRING
-    run('sudo supervisorctl restart flask-shop')
+    run('sudo supervisorctl restart sneakerbox')
