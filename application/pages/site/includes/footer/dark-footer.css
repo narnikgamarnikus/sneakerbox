@@ -1,3 +1,7 @@
+footer {
+	height: 100%;
+	position: relative;	
+}
 .footer-bs {
     background-color: #0c84e4;
 	padding: 60px 40px;
