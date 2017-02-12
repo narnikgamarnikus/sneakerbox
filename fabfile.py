@@ -8,6 +8,8 @@ host_string = config.HOST_STRING
 
 def deploy():
     env.host_string = config.HOST_STRING
+    run('sudo chmod 777 -R /var/www/sneakerbox')
+    print('chmod in /var/www/sneakerbox changet to 777')
     with cd('/var/www/sneakerbox'):
         with shell_env(MODE='PRODUCTION'):
             run('git reset --hard HEAD')
@@ -19,6 +21,8 @@ def deploy():
                 run('python manage.py db upgrade')
                 run('python manage.py build')
             run('supervisorctl restart sneakerbox')
+            run('sudo chmod 654 -R /var/www/sneakerbox')
+            print('chmod in /var/www/sneakerbox changet to 654')
 
 
 def restart():
