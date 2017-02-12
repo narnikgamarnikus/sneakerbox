@@ -43,12 +43,12 @@ def product(keyword):
     
     return render_template('site/product/product.html', product=product)
 
-
+'''
 @bp.context_processor
 def menu():
 	categories = [category.subname for category in Product.query.group_by(Product.subname).all()]
 	return dict(categories=categories)
-
+'''
 
 
 
